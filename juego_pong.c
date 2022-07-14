@@ -6,7 +6,7 @@
 #define RAQJUG 178
 #define RAQSIS 219
 
-void  borde (char campo[V][H])
+void  borde (char campo[V][H])//pintamos el borde
 {
     int i,j;
     for (i=0; i<V; i++) //vertical
@@ -18,12 +18,12 @@ void  borde (char campo[V][H])
             if(i==0||i==V-1)
             {
 
-                campo[i][j]='-';
+                campo[i][j]='-';//horizontal
             }
             else if(j==0||j==H-1)
             {
 
-                campo[i][j]='|';
+                campo[i][j]='|'; //vetical
             }
             else
             {
@@ -32,10 +32,9 @@ void  borde (char campo[V][H])
             }
         }
     }
-
 }
 
-void raqjug(char campo[V][H], int inijug,int finjug)
+void raqjug(char campo[V][H], int inijug,int finjug)//pintamos la raqueta  del jugador
 {
     int i,j;
 
@@ -48,11 +47,8 @@ void raqjug(char campo[V][H], int inijug,int finjug)
 
         }
     }
-
-
 }
-
-void raquia(char campo[V][H], int iniia,int finia)
+void raquia(char campo[V][H], int iniia,int finia)//raqueta del sistema
 {
     int i,j;
     for(i=iniia; i<=finia; i++)
@@ -66,13 +62,13 @@ void raquia(char campo[V][H], int iniia,int finia)
 
     }
 }
-void pel(char campo [V][H],int pelX,int pelY)
+void pel(char campo [V][H],int pelX,int pelY)//pelota
 
 {
-    campo[pelY][pelX]=PELOTA;
+    campo[pelY][pelX]=PELOTA;//indicamos que queremos queremos mostrar por pelota
 }
 
-void leercamp(char campo[V][H])
+void leercamp(char campo[V][H]) //para leer el campo
 {
     int i,j;
     for(i=0; i<V; i++)
@@ -85,7 +81,6 @@ void leercamp(char campo[V][H])
         printf("\n");
     }
 }
-
 
 ////////////////////////////////////////////////////////
 void gameloop(char campo[V][H],int pelx,int pely,int inijug, int finjug,int iniia, int finia,int modX, int modY,int modia )
@@ -154,9 +149,6 @@ void input(char campo[V][H],int *pelx,int *pely,int *inijug, int *finjug,int *in
         *modia *=-1;
     }
 
-
-
-
 //modificacion
 
     if(*gol == 0)
@@ -209,33 +201,31 @@ void update(char campo[V][H],int pelx,int pely,int inijug, int finjug,int iniia,
 
 ////////////////////////////
 
-
-
-
 int main()
 {
 
     int pelx, pely,inijug,finjug,iniia,finia;  //variables de posicion
     int modX,modY,modia;   //variables de movidificacion
-    char campu[V][H];
+    char campu[V][H];//matriz la que hace de campo donde se ejecutara el juego
 
-    //posicion
-    pelx=37;
+    //posicion original de la pelota
+    pelx=30;
     pely=10;
 
+    //tamaño de las raquetas jugador
     inijug=8;
     finjug=12;
 
+    //tamaño raqueta maquina
     iniia =3;
     finia=18;
 
-    //modificacion
+    //modificacion de  la pelota
     modX=-1;
     modY=-1;
     modia=-1;
 
-
-    inicio(campu,pelx,pely,inijug,finjug,iniia,finia);
+    inicio(campu,pelx,pely,inijug,finjug,iniia,finia);//mandamos las variables
     gameloop(campu,pelx,pely,inijug,finjug,iniia,finia,modX,modY,modia);
     system("pause");
 
@@ -244,12 +234,8 @@ int main()
 
 void inicio(char campo[V][H],int pelx,int pely,int inijug, int finjug,int iniia, int finia)
 {
-    borde(campo);
+    borde(campo);//pintar borde del campo
     raqjug(campo,inijug,finjug);
     raquia(campo,iniia,finia);
     pel(campo,pelx,pely);
-
 }
-
-
-
